@@ -50,7 +50,7 @@ ip addr
 
 The active network interface was `eth0`, with the following configuration:
 
-- IPv4 address: `192.168.43.66`
+- IPv4 address: `192.168.xx.xx`
 - Network prefix: `/24`
 - Interface state: UP
 
@@ -109,17 +109,15 @@ nslookup example.com
 
 The configured DNS resolver was:
 
-`192.168.43.1`
+`192.168.xx.x`
 
 The lookup returned the following addresses:
 
 **IPv4 (A records):**
-- `104.20.23.154`
-- `172.66.147.243`
+- `104.20.xx.xxx`
+- `172.66.xxx.xxx`
 
-**IPv6 (AAAA records):**
-- `2606:4700:10::ac42:93f3`
-- `2606:4700:10::6814:179a`
+  **And my mac address**
 
 ### Wireshark investigation
 
@@ -136,7 +134,7 @@ Four relevant packets were identified:
 3. An AAAA record query for `example.com`.
 4. A response containing two IPv6 addresses.
 
-The traffic showed communication between my Kali machine (`192.168.43.66`) and the DNS resolver (`192.168.43.1`) over destination port `53`.
+The traffic showed communication between my Kali machine (`192.168.xx.xx`) and the DNS resolver (`192.168.xx.x`) over destination port `53`.
 
 **Key finding:** DNS resolution can return multiple addresses for one domain, including both IPv4 and IPv6 records. Wireshark allowed me to observe the queries and their corresponding responses rather than relying only on the output of the lookup command.
 
@@ -158,12 +156,12 @@ The output revealed several listening TCP ports:
 |---|---|
 | 80 | HTTP |
 | 443 | HTTPS |
-| 1514 | Wazuh agent communication |
-| 1515 | Wazuh agent registration |
-| 9200 | OpenSearch/Elasticsearch API |
-| 9300 | OpenSearch/Elasticsearch cluster communication |
-| 3333 | Application-specific service |
-| 55000 | Wazuh API |
+| **** | Wazuh agent communication |
+| **** | Wazuh agent registration |
+| **** | OpenSearch/Elasticsearch API |
+| **** | OpenSearch/Elasticsearch cluster communication |
+| **** | Application-specific service |
+| ***** | Wazuh API |
 
 These are common service associations, not verified process identifications. The exercise focused on identifying listening ports rather than investigating the processes behind each one.
 
@@ -234,8 +232,8 @@ The following three packets were identified:
 
 **Connection details:**
 
-- Client IP: `192.168.43.66`
-- Server IP: `104.20.23.154`
+- Client IP: `192.168.xx.xx`
+- Server IP: `104.20.xx.xxx`
 - Client source port: `36416`
 - Destination port: `443`
 
