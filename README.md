@@ -317,7 +317,6 @@ The supporting evidence includes:
 - TCP handshake screenshot and packet details.
 - TLS 1.3 packet observations.
 
-Original `.pcapng` capture files are intended to be added to the repository as additional supporting evidence.
 
 ## 9. Conclusion
 
@@ -331,4 +330,4 @@ These skills provide a foundation for further learning in network security, secu
 
 ---
 
-**Project status:** Practical networking exercises completed. Additional packet capture files and supporting evidence can be added to the repository as they are organised.
+
